@@ -3,6 +3,8 @@
 import MainSlider from "./modules/slider/main_slider";
 import SupSlider from "./modules/slider/support_slider";
 import Video from "./modules/video";
+import Difference from "./modules/difference";
+import Forms from "./modules/form";
 
 window.addEventListener('DOMContentLoaded', () => {
     const mainSlider = new MainSlider({ wrapper: '.page', btns: '.next' }).init(),
@@ -36,4 +38,8 @@ window.addEventListener('DOMContentLoaded', () => {
             .init();
 
     const video = new Video('.play', '.overlay').init();
+
+    const difference = new Difference('.officerold', '.officernew', '.officer__card-item').init();
+
+    const form = new Forms('.form', './assets/question.php').init();
 });

@@ -26,10 +26,11 @@ export default class SupSlider extends Slider {
         }
 
         if (this.timer) {
-            this.timerSlide(5000);
+            this.timerSlide(3000);
         }
 
         this.trigger();
+        this.stopTimer();
     }
 
     trigger() {
@@ -53,7 +54,7 @@ export default class SupSlider extends Slider {
     }
 
     timerSlide(time) {
-        setInterval(() => {
+        this.timerID = setInterval(() => {
             let save = this.wrapper.firstElementChild;
 
             this.wrapper.append(save);
@@ -61,6 +62,16 @@ export default class SupSlider extends Slider {
                 this.decor(this.wrapper.firstElementChild);
             }
         }, time);
+    }
+
+    stopTimer() {
+        this.wrapper.addEventListener('mouseover', () => {
+            clearInterval(this.timerID);
+        });
+
+        this.wrapper.addEventListener('mouseout', () => {
+            this.timerSlide(3000);
+        });
     }
 
     decor(element) {
